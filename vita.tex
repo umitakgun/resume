@@ -1,0 +1,340 @@
+\documentclass[12pt,letterpaper]{article}
+
+\def\myauthor{Ibrahim Umit Akgun}
+\def\mytitle{umit-cv}
+\def\myemail{i.umitakgun@gmail.com}
+\def\myedumail{ibrahim.akgun@ozu.edu.tr}
+\def\myweb{umitakgun}
+\def\linkedin{https://tr.linkedin.com/in/ibrahim-ümit-akgün-29a0a942}
+\def\myphone{+90 5078740393}
+\def\mykeywords{
+  umit akgun, 
+  resume, 
+  curriculum, 
+  vita, 
+  curriculum vita, 
+  cv, 
+  umit, 
+  akgun, 
+}
+
+\setlength\parindent{0pt}
+
+\newenvironment{itemize*}%
+{\begin{itemize}%
+  \setlength{\itemsep}{0pt}}%
+{\end{itemize}}
+
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+%\usepackage{ocgtools}
+\usepackage{enumitem}
+\setlist{nolistsep,leftmargin=0.15in}
+\usepackage[log-declarations=false]{xparse}
+\usepackage[adobe-garamond]{mathdesign}
+\usepackage[no-math]{fontspec}
+\usepackage{microtype}
+\usepackage[margin=1.125in,top=1.375in,right=1in,left=2in]{geometry}
+\usepackage[strict]{changepage}
+\usepackage[
+  ocgcolorlinks,
+  urlcolor={[rgb]{0,0,0.54}},
+  unicode,
+  plainpages=false,
+  pdfpagelabels,
+  pdftitle={\mytitle},
+  pdfauthor={\myauthor},
+  pdfkeywords={\mykeywords}
+]{hyperref}
+
+% fix ocgcolor link breaking; thanks due to Benjamin Lerner (http://goo.gl/VZKR7M)
+\makeatletter
+\AtBeginDocument{%
+  \newlength{\temp@x}%
+  \newlength{\temp@y}%
+  \newlength{\temp@w}%
+  \newlength{\temp@h}%
+  \def\my@coords#1#2#3#4{%
+    \setlength{\temp@x}{#1}%
+    \setlength{\temp@y}{#2}%
+    \setlength{\temp@w}{#3}%
+    \setlength{\temp@h}{#4}%
+    \adjustlengths{}%
+    \my@pdfliteral{\strip@pt\temp@x\space\strip@pt\temp@y\space\strip@pt\temp@w\space\strip@pt\temp@h\space re}}%
+  \ifpdf
+    \typeout{In PDF mode}%
+    \def\my@pdfliteral#1{\pdfliteral page{#1}}% I don't know why % this command...
+    \def\adjustlengths{}%
+  \fi
+  \ifxetex
+    \def\my@pdfliteral #1{\special{pdf: literal direct #1}}% isn't equivalent to this one
+    \def\adjustlengths{\setlength{\temp@h}{-\temp@h}\addtolength{\temp@y}{1in}\addtolength{\temp@x}{-1in}}%
+  \fi%
+  \def\Hy@colorlink#1{%
+    \begingroup
+      \ifHy@ocgcolorlinks
+        \def\Hy@ocgcolor{#1}%
+        \my@pdfliteral{q}%
+        \my@pdfliteral{7 Tr}% Set text mode to clipping-only
+      \else
+        \HyColor@UseColor#1%
+      \fi
+  }%
+  \def\Hy@endcolorlink{%
+    \ifHy@ocgcolorlinks%
+      \my@pdfliteral{/OC/OCPrint BDC}%
+      \my@coords{0pt}{0pt}{\pdfpagewidth}{\pdfpageheight}%
+      \my@pdfliteral{F}% Fill clipping path (the url's text) with current color
+      \my@pdfliteral{EMC/OC/OCView BDC}%
+      \begingroup%
+        \expandafter\HyColor@UseColor\Hy@ocgcolor%
+        \my@coords{0pt}{0pt}{\pdfpagewidth}{\pdfpageheight}%
+        \my@pdfliteral{F}% Fill clipping path (the url's text) with \Hy@ocgcolor
+      \endgroup%
+      \my@pdfliteral{EMC}%
+      \my@pdfliteral{0 Tr}% Reset text to normal mode
+      \my@pdfliteral{Q}%
+    \fi
+    \endgroup
+  }%
+}
+\makeatother
+% end fixes
+
+\newcommand{\Csh}{C{\#}}
+
+\newcommand{\ML}{\textsc{Matlab}}
+\newcommand{\Simu}{Simulink}
+\newcommand{\MLS}{\ML{}/\Simu{}}
+\newcommand{\apdl}{\textsc{APDL}}
+\newcommand{\ansys}{\textsc{Ansys}}
+\newcommand{\fluent}{\textsc{Fluent}}
+\newcommand\CPP{C/C\ensuremath{+}\ensuremath{+}}
+\newcommand{\Star}{\textsc{Star-CCM\ensuremath{+}}}
+
+\newcommand{\mhead}[1]{\leavevmode\marginpar{\sffamily\footnotesize #1}}
+\newcommand{\rdate}[1]{{\addfontfeature{Numbers=OldStyle} \hfill #1}}
+\renewcommand{\date}[1]{{\addfontfeature{Numbers=OldStyle} #1}}
+\renewcommand{\labelitemi}{-} 
+
+\setmainfont[
+  Ligatures={TeX,Common},
+  BoldFont={AGaramondPro-Semibold},
+]{Adobe Garamond Pro}
+\setsansfont[
+  Ligatures={TeX,Common},
+  Letters=SmallCaps,
+  Color=660000,
+]{Adobe Garamond Pro}
+\setmonofont[Scale=0.85]{FontAwesome}
+
+\makeatletter % fix for \hrulefill w/ mathdesign package
+\def\hrulefill{\leavevmode\leaders \hrule height \rulethickness \hfill\kern\z@}
+\makeatletter
+
+\begin{document}\flushbottom
+\pagestyle{fancy} \setlength\headwidth{6.5in}
+\rhead{\textsc{I. Umit.~Akgun—r\'{e}sum\'{e}—\thepage{} of \pageref*{LastPage}}} \cfoot{}
+\thispagestyle{empty}
+\begin{adjustwidth}{-1in}{}
+{\Huge
+  {\textsc{%
+    {\addfontfeature{Style=TitlingCaps}I}\kern-2pt.~% 
+    {\addfontfeature{Style=TitlingCaps}U}\kern-1.5ptmit
+    {\addfontfeature{Style=TitlingCaps}A}kgun}
+  }
+}
+\hfill\hfill\hfill
+{
+  \hfill
+  \begin{minipage}[b]{1.5in}
+    \flushright \footnotesize 
+    \href{tel:\myphone}{\myphone} \\ %\texttt{}~
+	No military obligation \\    
+    \href{mailto:\myemail}{\myemail} \\
+    \href{mailto:\myedumail}{\myedumail} \\
+    \href{https://www.github.com/\myweb}{\texttt{}}~\href{\linkedin}{\texttt{}~\myweb}
+  \end{minipage}
+}\par
+\hrulefill
+\end{adjustwidth}  
+\reversemarginpar 
+\setlength\marginparwidth{0.85in}
+\smallskip
+\mhead{Education}%
+\textbf{Ozyegin University,} Istanbul, Turkey \newline
+\emph{Master of Science, \href{http://www.ozyegin.edu.tr/AKADEMIK-PROGRAMLAR/Muhendislik-Fakultesi/Computer-Science?lang=en-US}{Computer Science}} \rdate{2011–2014}
+\begin{itemize*}
+  \item Cumulative GPA: 3.33/4.00; {Compiler Optimization}
+  \item Thesis: \href{https://dl.dropboxusercontent.com/u/48518192/umitakgun_thesis.pdf}{Performance Evaluation of Unfolded Sparse Matrix-Vector Multiplication}
+  \item Advisor: Asst. Prof.~T. Bar{\i}\c{s}.~Aktemur
+  \item Research Interests: Compiler design, programming language design and
+semantics, runtime program generation, software analysis, software engineering
+\end{itemize*}
+
+\medskip
+\textbf{Ege University,} Izmir, Turkey \newline
+\emph{Bachelor of Science, \href{http://bilmuh.ege.edu.tr/}{Computer Engineering}} \rdate{2005-2009}
+\begin{itemize*}
+  \item Cumulative GPA: 3.18/4.00; {Operating Systems, Embedded Systems}
+  \item Senior Project:{Operating System For Wireless Sensor Networks : SIMIT}
+  \item Advisors: Prof.~Aylin~Kantarc{\i}
+  \item Research Interests: Operating Systems, Wireless Sensor Network, Network
+Programming, Embedded Systems.
+\end{itemize*}
+
+\medskip
+\textbf{MEV Izmir Science High School,} Izmir, Turkey 
+\rdate{2005}
+\begin{itemize*}
+  \item GPA: 4.96/5.00
+\end{itemize*}
+
+\bigskip
+\mhead{Research \newline Interests}%
+Compiler Design, Operating Systems, Programming Language Design and Semantics,
+Multicore Programming, Runtime Program Generation, Software Analysis, Software
+Engineering, Domain Specific Languages, Embedded and Real-Time Systems, Network
+Programming, Distributed and Parallel Computing.
+
+\bigskip
+\mhead{Software \newline Proficiencies}%
+\begin{itemize}
+  \item \emph{Fluent} \CPP{},Java, Swift, Objective-C, Scala
+  \item \emph{Working Knowledge} C{\#}, Python, Haskell, Rust, Perl
+  \item \emph{Scripting, Typography} Bash, Ksh, Zsh, Lex Yacc, \LaTeX{}
+  \item \emph{Assembly} i386, x86/64(SIMD), ARM, PowerPC   
+  \item \emph{Development Environment} XCode, Android Studio, Emacs, Vim, Git, IntelliJ, Eclipse, SVN, Linux, OS X, Windows, 
+\end{itemize}
+
+\bigskip
+\mhead{Professional \newline Experience}%
+\textbf{ING Bank,} Istanbul \newline
+\emph{Software Engineer (iOS Development)} \rdate{\textsc{Aug}~2014–\textsc{...}} \newline
+I was working on ParaMara application which is designed and developed by Objective-C. I was responsible for coding key features of ParaMara. Currently, I'm working on New ING Mobile application which is designed and developed by pure Swift. I'm leading iOS Team which consists of four developers and mostly working on creating a new flexible and stable security framework for financial mobile applications.  
+
+\textbf{SIEMENS,} Istanbul \newline
+\emph{Software Engineer (Embedded Systems and Real-time Frameworks)} \rdate{\textsc{May}~2013–\textsc{Aug}~2014} \newline
+I was working on real-time and embedded systems especially Software PLC. We developed with C++ applying some best practices and design patterns. We built a framework for Siemens PLCs which are widely used in automation systems. My specialties based on software design and architecture. I was working
+on network communication part of PLCs as well. We developed multi-threaded network
+oriented programs.
+
+
+\medskip
+\textbf{TUBITAK (The Scientific and Technological Research Council
+of Turkey equivalent NSF),} Istanbul \newline
+\emph{Software Engineer (Embedded Systems and Operating System)} \rdate{2010–2013}\newline
+I was working on real-time and embedded operating systems. Extensive C
+programming skills on embedded real-time systems for avionics software. I have
+involved multithreaded applications, memory management, pthread library, thread
+manager and memory manager for our operating system. I gained solid debugging skills to
+solve system problems, maintenance of lightweightIP networking stack written by
+Adam Duncan; I have a desire for high quality software systems, drives juniors to excel
+in software engineering principles. Our team were consisting of five software engineers. Also I
+was working on multicore concurrent programming. I implemented lock-free data
+structures.(linked list, priority queue).
+
+\medskip
+\textbf{Ozyegin University,} Istanbul \newline
+\emph{Research Assistant} \rdate{2011–2014}\newline
+I was doing research on LLVM, code generation, compiler design and programming
+languages at University of Ozyegin. (You can reach more information in Runtime
+Program Generation and Empirical Optimization section )
+
+\medskip
+\textbf{IBM Global Services,} Istanbul \newline
+\emph{UNIX/Linux System Administrator} \rdate{2009–2010}
+I was UNIX/Linux administration for IBM Global Services. I have worked on
+management of SAP and DB2. In addition, I also worked on database backup
+recovery operations.
+
+\medskip
+\textbf{Ege University Computer Engineering Department,} Izmir \newline
+I wrote interprocess communication systems and kernel memory management
+algorithms for eGIS operating that is written by Kasim Sinan Yildirim. And I had
+many contribution to several part of (real-time concept) eGIS. During the internship,
+researched real-time operating systems and developed several embedded applications
+such as QNX operating system and Wireless Sensor Network Routing Algortihms.
+
+
+\bigskip
+\mhead{Honors \& \newline Awards}%
+Ozyegin University, Full Tuition Scholarship         \rdate{2011-2014}\newline
+MEV Izmir Science High School Physic Olympiad School Team	\rdate{2003-2005}
+
+\newgeometry{margin=1.125in,top=1in,right=1in,left=2in}
+\reversemarginpar\setlength\marginparwidth{0.85in}
+\mhead{Thesis}%
+\textbf{MSc. : Performance Evolution Of Unfolded Matrix-Vector Multiplication Code} \newline
+Sparse matrix-vector multiplication (spMV) is a kernel operation in scientific
+computation. There exist problems where a matrix is repeatedly multiplied by many
+different vectors. For such problems, specializing the spMV code based on the matrix
+has the potential of producing significantly faster code. This, in fact, has been one of
+the motivational examples of program generation. Using program generation, spMV
+code can be unfolded fully to eliminate loop overheads as well as enable optimizations
+with high impact. In this dissertation we focus on specialization of spMV by unfold-
+ing the code according to a given matrix. We provide an experimental evaluation of
+performance using 70 sparse matrices collected from real-world scientific computation
+domains. We present optimizations with which high-performant assembly code can be
+generated much more rapidly than the general-purpose compiler icc. We finally
+present how one of the optimizations we studied can be integrated into a compiler as a
+code transforming pass.
+\newline\newline
+\textbf{BSc. : Embedded Operating System For Wireless Sensor Networks}\newline
+My thesis is on an operating system. WSN’s operating systems are embedded
+operating systems(Some of them RTOS). So the efficiency and robustness were kept
+in mind when developing the operating system. I examined other WSN’s operating
+systems and several realtime operating systems. I worked on thread management, IPC
+and scheduling algorithm especially and trying to progress in these subjects. The
+operating system was developed completely with the help of open-source tool ( gcc,
+gdb, ddd ...). ( whole development process on GNU/Linux (Debian)).
+
+\bigskip
+\mhead{Recently worked on\newline Projects}%
+\textbf{Runtime Program Generation and Empirical Optimization}\newline
+This project is generously funded by TUBITAK.
+The goal of this project is to combine the advantages of runtime program generation
+(RTPG) with empirical optimization (EO). RTPG can specialize a program according
+to runtime inputs that are not available at compile-time, hence provides data-specific
+optimization opportunities. Empirical Optimization (aka auto-tuning) aims to find the
+most efficient version of a program on a specific architecture by performing install-time
+experiments. The project will explore the combination of these two techniques; in
+particular, how we can use empirical optimization to drive the decisions taken during
+runtime generation.
+\newline
+\href{http://srl.ozyegin.edu.tr/projects/rtpg4llvm}{Compiler for runtime program generation}\newline
+\href{http://srl.ozyegin.edu.tr/projects/spMVlib/}{Sparse matrix-dense vector multiplication library}
+
+\medskip
+\textbf{Software Pattern Recognition}\newline
+This project main purpose was software pattern search in source code. These patterns
+are well know design patterns or user defined patterns. Later developments took place
+within the scope of the project. I extracted AST(Abstract Syntax Tree) from the
+source code and searching patterns in this AST. Our ultimate goal was not only own
+patterns, also we recognize user defined relationships. This project has been written in
+Java and it targets only Java code as an input. I wrote many software design pattern
+code. And I trained my program these samples. My program extract all AST’s of these
+design patterns. We tried well-known Java frameworks to our program. As you know,
+some design patterns have a similar software model. Our program search design
+pattern AST’s in given code and generate statistical data. These data shows us which
+part of program similar to which design pattern.
+
+\bigskip
+\mhead{Languages}
+\begin{itemize*}
+  \item English : Fluent (TOEFL score : 96)
+  \item Turkish : Native
+\end{itemize*}
+
+\bigskip
+\mhead{References}%
+\begin{itemize*}
+\item \href{http://aktemur.github.io}{Dr. Tankut Baris Aktemur, Assistant Professor}
+\item \href{http://faculty.ozyegin.edu.tr/ismailari}{Dr. Ismail Ari, Assistant Professor}
+\item \href{http://ugurdag.com}{Dr. Fatih Ugurdag, Associate Professor}
+\item \href{http://yzgrafik.ege.edu.tr/~ugur}{Dr. Aybars Ugur, Associate Professor}
+\item \href{http://efe.ege.edu.tr/~kantarci}{Dr. Aylin Kantarci, Associate Professor}
+\end{itemize*}
+
+\end{document}
